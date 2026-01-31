@@ -8,6 +8,7 @@ public class Nono_Tile : MonoBehaviour
     void Start()
     {
         Activated = false;    
+        //Debug.Log("Start value " + Activated.ToString());
     }
 
     // Update is called once per frame
