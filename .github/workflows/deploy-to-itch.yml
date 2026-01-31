@@ -18,11 +18,18 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          unityVersion: 6000.0.0f1
+          unityVersion: 6000.0.57f1
           targetPlatform: WebGL
           buildName: WebGL
           buildsPath: build
-          uploadActivationFile: true
+          skipActivation: true
+
+      - name: Upload activation file
+        uses: actions/upload-artifact@v3
+        with:
+          name: unity-activation
+          path: Unity_v6000*.alf
+
 
       - name: Install butler
         run: |
