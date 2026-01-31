@@ -14,7 +14,7 @@ public class PuzzleManager : MonoBehaviour
     {
         //solution = { true,false,true,true};
 
-        for (int i = 0; i<121; i++)
+        for (int i = 0; i<100; i++)
         {
             Nono_Tile temp = Instantiate(tilePrefab, Vector2.zero, Quaternion.identity);
             temp.gameObject.transform.SetParent( nonoPanel.gameObject.transform);
