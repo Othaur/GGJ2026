@@ -25,7 +25,7 @@ jobs:
           skipActivation: true
 
       - name: Upload activation file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: unity-activation
           path: Unity_v6000*.alf
