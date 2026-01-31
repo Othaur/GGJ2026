@@ -13,16 +13,27 @@ jobs:
         uses: actions/checkout@v3
 
       # Build WebGL (activation happens automatically)
-      - name: Build WebGL
+      - name: Build WebGL (generate activation file)
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_ACTIVATION_FILE: true
         with:
           unityVersion: 6000.0.57f1
           targetPlatform: WebGL
           buildName: WebGL
           buildsPath: build
-          skipActivation: true
+          unityLicensingServer: false
+          skipActivation: false
+
+
+      - name: Cache Unity Library
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ runner.os }}-${{ hashFiles('**/*.cs') }}
+          restore-keys: |
+            Library-${{ runner.os }}-
 
       - name: Upload activation file
         uses: actions/upload-artifact@v4
