@@ -12,22 +12,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Activate Unity license
-      - name: Activate Unity
-        uses: game-ci/unity-activate@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
-      # Build WebGL
+      # Build WebGL (activation happens automatically)
       - name: Build WebGL
         uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           unityVersion: 6000.0.0f1
           targetPlatform: WebGL
           buildName: WebGL
           buildPath: build
 
-      # Install butler
       - name: Install butler
         run: |
           curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
@@ -35,7 +30,6 @@ jobs:
           sudo mv butler/butler /usr/local/bin/butler
           butler -V
 
-      # Upload to itch.io
       - name: Push to itch.io
         env:
           BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
