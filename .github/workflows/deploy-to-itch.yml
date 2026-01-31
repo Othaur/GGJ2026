@@ -12,19 +12,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Install Unity 6.0
-      - name: Setup Unity
-        uses: game-ci/unity-setup@v4
-        with:
-          unityVersion: 6000.0.57f1
-          modules: webgl
+      # Activate Unity license
+      - name: Activate Unity
+        uses: game-ci/unity-activate@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
       # Build WebGL
       - name: Build WebGL
         uses: game-ci/unity-builder@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          unityVersion: 6000.0.0f1
           targetPlatform: WebGL
           buildName: WebGL
           buildPath: build
