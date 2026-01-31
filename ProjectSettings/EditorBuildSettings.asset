@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScreen.unity
     guid: 47a047429915ebc4fb48070ca427817f
+  - enabled: 1
+    path: Assets/Scenes/Nonogram.unity
+    guid: fa044567006c49743abef9c48af35eb9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

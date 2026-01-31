@@ -8,6 +8,7 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] List<bool> solution;
 
     [SerializeField] GameObject nonoPanel;
+    [SerializeField] GameObject nextPanel;
     [SerializeField] Nono_Tile tilePrefab;
 
     bool victory = false;
@@ -16,6 +17,7 @@ public class PuzzleManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        nextPanel.SetActive(false);
         FillSolution();
 
         for (int i = 0; i<100; i++)
@@ -46,8 +48,15 @@ public class PuzzleManager : MonoBehaviour
                 {
                     cells[i].GetComponent<UIImageClick>().Deactivate();
                 }
+                DisplayVictory();
             }
         }
+
+    }
+
+    void DisplayVictory()
+    {
+        nextPanel?.SetActive(true);
     }
 
     bool VerifySolution()
@@ -62,30 +71,7 @@ public class PuzzleManager : MonoBehaviour
         }
         return true;
     }
-
-    void DisplayCells()
-    {
-        int index = 0;
-        string output = "\n";
-        for(int i = 0; i< 10; i++)
-        {    for (int j = 0; j < 10; j++)
-            {
-                if (cells[index].Activated)
-                {
-                    output += "1";
-                }
-                else
-                {
-                    output += "0";
-                }
-                index++;
-            }
-            output += "\n";
-        }
-
-        Debug.Log(output +  "$$$" + index + "***" + cells.Count);
-    }
-
+    
     void FillSolution()
     {
         solution = new List<bool>
