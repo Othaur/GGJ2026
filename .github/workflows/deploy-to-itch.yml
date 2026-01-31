@@ -21,7 +21,8 @@ jobs:
           unityVersion: 6000.0.0f1
           targetPlatform: WebGL
           buildName: WebGL
-          buildPath: build
+          buildsPath: build
+          uploadActivationFile: true
 
       - name: Install butler
         run: |
