@@ -2,7 +2,7 @@ name: Build & Deploy WebGL to itch.io
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main","Colin" ]
 
 jobs:
   build:
@@ -25,6 +25,7 @@ jobs:
           buildsPath: build
           unityLicensingServer: false
           skipActivation: false
+
 
 
       - name: Cache Unity Library
