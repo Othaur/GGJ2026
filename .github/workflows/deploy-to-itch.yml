@@ -1,17 +1,35 @@
-name: Deploy to itch.io
+name: Build & Deploy WebGL to itch.io
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Install Unity 6.0
+      - name: Setup Unity
+        uses: game-ci/unity-setup@v4
+        with:
+          unityVersion: 6000.0.57f1
+          modules: webgl
+
+      # Build WebGL
+      - name: Build WebGL
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          targetPlatform: WebGL
+          buildName: WebGL
+          buildPath: build
+
+      # Install butler
       - name: Install butler
         run: |
           curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
@@ -19,9 +37,9 @@ jobs:
           sudo mv butler/butler /usr/local/bin/butler
           butler -V
 
+      # Upload to itch.io
       - name: Push to itch.io
         env:
           BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
         run: |
-          # Replace "dist" with your build folder
-          butler push Build sleepydragongames/GGJ2026:web
+          butler push build/WebGL sleepydragongames/GGJ2026:web
