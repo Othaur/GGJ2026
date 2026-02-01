@@ -9,12 +9,43 @@ public class PuzzleBoxManager : MonoBehaviour
     PuzzleBoxTiles TileClicked;
     public Button puzzleCompleteButton;
 
+
+    [SerializeField] GameObject narrationPanel;
+    [SerializeField] GameObject puzzle;
+    [SerializeField] GameObject successPanel;
+    [SerializeField] GameObject maskPiece;
+
+
     public bool Peice1InPosition = false;
     public bool Peice2InPosition = false;
     void Start()
     {
         puzzleCompleteButton.enabled = false;
+
+        puzzle.SetActive(false);
+        successPanel.SetActive(false);
+        narrationPanel.SetActive(true);
+        narrationPanel.GetComponentInChildren<textscroll>().ActivateText();
     }
+
+    public void ShowPuzzle()
+    {
+        successPanel.SetActive(false);
+        narrationPanel.SetActive(false);
+        puzzle.SetActive(true);
+
+    }
+
+    public void ShowSuccess()
+    {
+        narrationPanel.SetActive(false);
+        puzzle.SetActive(false);
+        successPanel.SetActive(true);
+        maskPiece.SetActive(true);
+
+        successPanel.GetComponentInChildren<textscroll>().ActivateText();
+    }
+
     private void Update()
     {
         // Get mouse position in screen coordinates
