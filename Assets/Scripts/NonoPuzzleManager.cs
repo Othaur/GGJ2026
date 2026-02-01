@@ -2,14 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class PuzzleManager : MonoBehaviour
+public class NonoPuzzleManager : MonoBehaviour
 {
-    [SerializeField] List<Nono_Tile> cells;
+    [SerializeField] List<UIImageClick> cells;
     [SerializeField] List<bool> solution;
+    [SerializeField] List<bool> prefill;
 
     [SerializeField] GameObject nonoPanel;
     [SerializeField] GameObject nextPanel;
-    [SerializeField] Nono_Tile tilePrefab;
+    [SerializeField] UIImageClick tilePrefab;
 
     bool victory = false;
 
@@ -19,17 +20,27 @@ public class PuzzleManager : MonoBehaviour
     {
         nextPanel.SetActive(false);
         FillSolution();
+        PrefillCells();
 
-        for (int i = 0; i<100; i++)
+        for (int i = 0; i < 100; i++)
         {
-            Nono_Tile temp = Instantiate(tilePrefab, Vector2.zero, Quaternion.identity);
-            temp.gameObject.transform.SetParent( nonoPanel.gameObject.transform);
+            UIImageClick temp = Instantiate(tilePrefab, Vector2.zero, Quaternion.identity);
+            temp.gameObject.transform.SetParent(nonoPanel.gameObject.transform);
+                       
             cells.Add(temp);
-            
-            Debug.Log("Tile activaed " + temp.Activated.ToString());
-            
+          //  Debug.Log("Tile activaed " + temp.Activated.ToString());
+
         }
 
+        for (int i = 0; i < 100; i++)
+        {
+            if (prefill[i])
+            {
+                Debug.Log("Prefill index" + i);
+                cells[i].Prefill();
+                // temp.Toggle();
+            }
+        }
         //DisplayCells();
 
     }
@@ -37,6 +48,7 @@ public class PuzzleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateVisual();
         // DisplayCells();
         if (!victory)
         {
@@ -54,6 +66,14 @@ public class PuzzleManager : MonoBehaviour
 
     }
 
+    void UpdateVisual()
+    {
+        //for (int i = 0; i < cells.Count; i++)
+        //{
+        //    cells[i].GetComponent<UIImageClick>().Deactivate();
+        //}
+    }
+
     void DisplayVictory()
     {
         nextPanel?.SetActive(true);
@@ -62,7 +82,7 @@ public class PuzzleManager : MonoBehaviour
     bool VerifySolution()
     {
         //Debug.Log("Verifying");
-        
+
         for (int i = 0; i < cells.Count; i++)
         {
             //Debug.Log(cells[i].ToString() + '-' + solution[i].ToString());
@@ -71,7 +91,7 @@ public class PuzzleManager : MonoBehaviour
         }
         return true;
     }
-    
+
     void FillSolution()
     {
         solution = new List<bool>
@@ -87,5 +107,23 @@ public class PuzzleManager : MonoBehaviour
             false,  false,  true,   true,   true,   true,   true,   true,   false,  false,
             false,  true,   true,   false,  false,  false,  false,  true,   true,  false
         };
+    }
+
+    void PrefillCells()
+    {
+        prefill = new List<bool>
+        {
+            false,  false,  false,  false,  false,  false,  false,  false,  false,  false,
+            false,  false,  false,  false,  true,   false,  true,   false,  false,  false,
+            false,  false,  true,   true,   true,   true,   true,   true,   false,  false,
+            false,  true,   false,  true,   false,  false,  true,   false,  true,   false,
+            false,  true,   false,  false,  true,   true,   false,  false,  true,   false,
+            false,  true,   true,   true,   true,   true,   true,   true,   true,   false,
+            true,   true,   true,   false,  false,  false,  false,  true,   true,   true,
+            false,  true,   true,   true,   false,  false,  true,   true,   true,   false,
+            false,  false,  true,   true,   true,   true,   true,   true,   false,  false,
+            false,  false,  false,  false,  false,  false,  false,  true,   true,  false
+        };
+
     }
 }

@@ -19,6 +19,7 @@ public class Nono_Tile : MonoBehaviour
 
     public void Toggle()
     {
+        Debug.Log("Swapped Value");
         Activated = !Activated;
     }
 }
