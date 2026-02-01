@@ -20,7 +20,10 @@ public class FirstNarrationManager : MonoBehaviour
         if (!scrolling.isTyping)
         {
             maskPanel.SetActive(true);
-            button.SetActive(true);            
+            if (button != null)
+            {
+                button.SetActive(true);
+            }
         }
     }
 }
