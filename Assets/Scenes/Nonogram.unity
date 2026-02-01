@@ -5410,7 +5410,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1912320508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1984329349}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PuzzleBox
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1912320508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5537,6 +5549,7 @@ GameObject:
   - component: {fileID: 1984329347}
   - component: {fileID: 1984329346}
   - component: {fileID: 1984329348}
+  - component: {fileID: 1984329349}
   m_Layer: 0
   m_Name: PuzzleManager
   m_TagString: Untagged
@@ -5593,6 +5606,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 552893801}
+--- !u!114 &1984329349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984329345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3f948d742bccf44844ced5bbd646aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1986731333
 GameObject:
   m_ObjectHideFlags: 0

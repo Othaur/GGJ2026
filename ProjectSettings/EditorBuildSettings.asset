@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PuzzleBox.unity
     guid: b2c4819dcccf24a40957e10f18caf2dd
+  - enabled: 1
+    path: Assets/Scenes/FinalNarration.unity
+    guid: dbae5f584e3331245ac3cc3d1a90bb6d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

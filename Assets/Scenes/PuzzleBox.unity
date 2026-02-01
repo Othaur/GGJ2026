@@ -2164,7 +2164,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1160033647}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
@@ -2173,7 +2173,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Nonogram
+          m_StringArgument: FinalNarration
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &955999953
@@ -2396,6 +2396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1160033646}
   - component: {fileID: 1160033645}
+  - component: {fileID: 1160033647}
   m_Layer: 0
   m_Name: Puzzle
   m_TagString: Untagged
@@ -2439,6 +2440,18 @@ Transform:
   - {fileID: 20409936}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1160033647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160033644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3f948d742bccf44844ced5bbd646aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1182578276
 GameObject:
   m_ObjectHideFlags: 0
