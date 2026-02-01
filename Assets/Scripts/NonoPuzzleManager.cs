@@ -8,9 +8,13 @@ public class NonoPuzzleManager : MonoBehaviour
     [SerializeField] List<bool> solution;
     [SerializeField] List<bool> prefill;
 
-    [SerializeField] GameObject nonoPanel;
-    [SerializeField] GameObject nextPanel;
+    [SerializeField] GameObject nonoPanel;    
     [SerializeField] UIImageClick tilePrefab;
+
+    [SerializeField] GameObject maskPiece;
+    [SerializeField] GameObject narrationPanel;
+    [SerializeField] GameObject puzzlePanel;
+    [SerializeField] GameObject successPanel;
 
     bool victory = false;
 
@@ -18,7 +22,14 @@ public class NonoPuzzleManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        nextPanel.SetActive(false);
+        successPanel.SetActive(false);
+        puzzlePanel.SetActive(false);
+        narrationPanel.SetActive(true);
+
+        narrationPanel.GetComponentInChildren<textscroll>().ActivateText();
+
+
+
         FillSolution();
         PrefillCells();
 
@@ -74,9 +85,21 @@ public class NonoPuzzleManager : MonoBehaviour
         //}
     }
 
+    public void DisplayPuzzle()
+    {
+        puzzlePanel?.SetActive(true);
+        narrationPanel?.SetActive(false);
+        successPanel?.SetActive(false);
+        
+        
+    }
+
     void DisplayVictory()
     {
-        nextPanel?.SetActive(true);
+        puzzlePanel.SetActive(false);
+        maskPiece.SetActive(true);
+        successPanel?.SetActive(true);
+        successPanel.GetComponentInChildren<textscroll>().ActivateText();
     }
 
     bool VerifySolution()
