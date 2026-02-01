@@ -18,7 +18,7 @@ public class textscroll : MonoBehaviour
     private int currentDisplayingText = 0;
 
     private Coroutine typingCoroutine;
-    private bool isTyping = false;
+    public bool isTyping = false;
 
     public void ActivateText()
     {
@@ -27,7 +27,7 @@ public class textscroll : MonoBehaviour
         {
             StopCoroutine(typingCoroutine);
             itemInfoText.text = itemInfo[currentDisplayingText];
-            isTyping = false;
+            //isTyping = false;
             return;
         }
 
@@ -49,5 +49,6 @@ public class textscroll : MonoBehaviour
         }
 
         isTyping = false;
+        currentDisplayingText++;
     }
 }
