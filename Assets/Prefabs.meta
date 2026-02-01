@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 0ee8c18bf29c1584fa2250820024afca
+=======
+guid: e7bcd8037980bb24ca70a9cc5ed18924
+>>>>>>> MovingTilePuzzle
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
