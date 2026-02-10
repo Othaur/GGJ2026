@@ -31,16 +31,22 @@ jobs:
         uses: actions/cache@v4
         with:
           path: Library
-          key: Library-${{ runner.os }}-${{ hashFiles('**/*.cs') }}
+          key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}
           restore-keys: |
-            Library-${{ runner.os }}-
+              Library-${{ runner.os }}-
+
 
       - name: Install butler
         run: |
-          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          for i in {1..5}; do
+            curl -L --retry 5 --retry-delay 2 -o butler.zip \
+              https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default && break
+          done
           unzip butler.zip -d butler
-          sudo mv butler/butler /usr/local/bin/butler
+          sudo install butler/butler /usr/local/bin/butler
           butler -V
+
+
 
       - name: Push to itch.io
         env:
