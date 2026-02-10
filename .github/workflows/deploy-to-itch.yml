@@ -54,4 +54,4 @@ jobs:
         run: |
           echo "Key length: ${#BUTLER_API_KEY}"
           ls -R build
-          butler push build/WebGL sleepydragongames/ggj2026:web
+          butler push build/WebGL two-nerds-studios/quest-for-the-mask-of-genomac:web
