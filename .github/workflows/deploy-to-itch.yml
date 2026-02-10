@@ -2,7 +2,7 @@ name: Build & Deploy WebGL to itch.io
 
 on:
   push:
-    branches: [ "main","Colin" ]
+    branches: [ "main" ]
 
 jobs:
   build:
