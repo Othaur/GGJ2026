@@ -52,4 +52,6 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.ITCH_IO_API_KEY }}
         run: |
-          butler push build/WebGL sleepydragongames/GGJ2026:web
+          echo "Key length: ${#BUTLER_API_KEY}"
+          ls -R build
+          butler push build/WebGL sleepydragongames/ggj2026:web
